@@ -1,0 +1,30 @@
+.root {
+  .top {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 400;
+    color: #323338;
+    .blue {
+      color: #4483f7;
+    }
+  }
+  .progress {
+    width: 270px;
+    height: 12px;
+    background: #ecf3fe;
+    border-radius: 10px;
+    position: relative;
+  }
+  .line {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 12px;
+    border-radius: 10px;
+    background: #4483f7;
+    width: 0%;
+  }
+}

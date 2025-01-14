@@ -1,0 +1,25 @@
+.root {
+  .columns {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+    .btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-radius: 4px;
+      background: #973fcf;
+      padding: 15px 43px;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 19.36px;
+      color: white;
+    }
+  }
+}

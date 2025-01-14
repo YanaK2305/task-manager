@@ -1,13 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "../store";
+
+import { ChangeT, TaskT } from "../../types";
+import { getSaveTasks } from "../../getTasks";
 
 interface TaskState {
-  tasks: any[];
+  tasks: TaskT[];
 }
 
 const initialState: TaskState = {
-  tasks: [],
+  tasks: getSaveTasks(),
 };
 
 export const taskSlice = createSlice({
@@ -15,11 +17,21 @@ export const taskSlice = createSlice({
 
   initialState,
   reducers: {
-    addTask: (state, action: PayloadAction<any>) => {
+    addTask: (state, action: PayloadAction<TaskT>) => {
       state.tasks.push(action.payload);
+    },
+    changeStatus: (state, action: PayloadAction<ChangeT>) => {
+      const task = state.tasks.find((item) => item.id === action.payload.id);
+      if (task) {
+        task.status = action.payload.status;
+        state.tasks = state.tasks.filter(
+          (item) => item.id !== action.payload.id
+        );
+        state.tasks.push(task);
+      }
     },
   },
 });
 
-export const { addTask } = taskSlice.actions;
+export const { addTask, changeStatus } = taskSlice.actions;
 export default taskSlice.reducer;
